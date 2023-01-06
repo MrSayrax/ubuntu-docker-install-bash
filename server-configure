@@ -11,13 +11,17 @@ Cyan='\033[0;36m'         # Cyan
 White='\033[0;37m'        # White
 NC='\033[0m' # No Color
 
+
 printf "${Cyan}Update and install necessary libs and GPG keys${NC}\n"
 
 sudo apt-get update && apt-get install -y \
   ca-certificates \
   curl \
   gnupg \
-  lsb-release
+  lsb-release \
+  qemu-guest-agent
+
+sudo systemctl start qemu-guest-agent
 
 sudo mkdir -p /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
