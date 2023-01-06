@@ -71,3 +71,4 @@ sudo gitlab-runner start
 sudo rm /home/gitlab-runner/.bash_logout
 sudo mkdir /var/www
 sudo chown -R gitlab-runner /var/www
+sudo usermod -aG docker gitlab-runner
