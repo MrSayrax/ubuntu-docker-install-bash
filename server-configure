@@ -24,7 +24,8 @@ sudo apt-get install -y \
   curl \
   gnupg \
   lsb-release \
-  qemu-guest-agent
+  qemu-guest-agent \
+  make
 
 sudo systemctl start qemu-guest-agent
 
