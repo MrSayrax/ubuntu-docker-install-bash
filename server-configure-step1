@@ -50,25 +50,3 @@ printf "${Green}Adding current user to the Docker group:${NC}\n"
 sudo usermod -aG docker $USER
 
 newgrp docker
-
-printf "${Green}Testing Docker container under the %s:${NC}\n" "${USER}"
-docker run hello-world
-
-printf "${Cyan}Docker compose installing:${NC}\n"
-sudo curl -L "https://github.com/docker/compose/releases/download/1.26.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
-
-printf "${Green}Testing Docker compose installation:${NC}\n"
-docker-compose --version
-
-printf "${Green}Gitlab Runner installation:${NC}\n"
-sudo curl -L --output /usr/local/bin/gitlab-runner "https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64"
-sudo chmod +x /usr/local/bin/gitlab-runner
-sudo useradd --comment 'GitLab Runner' --create-home gitlab-runner --shell /bin/bash
-sudo gitlab-runner install --user=gitlab-runner --working-directory=/home/gitlab-runner
-sudo gitlab-runner start
-
-sudo rm /home/gitlab-runner/.bash_logout
-sudo mkdir /var/www
-sudo chown -R gitlab-runner /var/www
-sudo usermod -aG docker gitlab-runner
