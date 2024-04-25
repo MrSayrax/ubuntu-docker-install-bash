@@ -1,4 +1,0 @@
-#!/bin/bash
-
-./server-configure-step1
-./server-configure-step2
